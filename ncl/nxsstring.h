@@ -129,6 +129,7 @@ class NxsString
 		NxsString			&operator+=(const int i);
 		NxsString			&operator+=(unsigned i);
 		NxsString			&operator+=(unsigned long i);
+		NxsString			&operator+=(unsigned long long i);
 		NxsString			&operator+=(const long l);
 		NxsString			&operator+=(const double d);
 		NxsString			&operator+=(const IndexSet &d);
@@ -526,6 +527,18 @@ inline NxsString& NxsString::operator+=(
 	{
 	char tmp[81];
 	std::sprintf(tmp, "%lu", l);
+	append(tmp);
+	return *this;
+	}
+
+/*!
+	Uses standard C function std::sprintf to append the unsigned long long integer `ll' to the stored string (format code %llu).
+*/
+inline NxsString& NxsString::operator+=(
+  const unsigned long long l)	/* the unsigned long integer to be appended */
+	{
+	char tmp[81];
+	std::sprintf(tmp, "%llu", l);
 	append(tmp);
 	return *this;
 	}
