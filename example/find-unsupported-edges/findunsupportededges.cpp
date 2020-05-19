@@ -731,8 +731,8 @@ void markSuspectNode(const set<long> & designators) {
 
 void parseAndProcessMRCADesignatorsFile(string filepath) {
 	if (gRefTree == 0L || gTaxonTree != 0L) {
-		cerr << "gRefTree" << (long )gRefTree << "\n";
-		cerr << "gTaxonTree" << (long )gTaxonTree << "\n";
+		cerr << "gRefTree" << (size_t)gRefTree << "\n";
+		cerr << "gTaxonTree" << (size_t)gTaxonTree << "\n";
 		cerr << "\nDesignators file must come after the full tree estimate, but before the taxonomy in the argument length\n";
 		throw exception();
 	}
