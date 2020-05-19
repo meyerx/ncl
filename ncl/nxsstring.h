@@ -136,6 +136,7 @@ class NxsString
 		NxsString			&operator<<(unsigned i);
 		NxsString			&operator<<(long l);
 		NxsString			&operator<<(unsigned long l);
+		NxsString			&operator<<(unsigned long long l);
 		NxsString			&operator<<(double d);
 		NxsString			&operator<<(const char *c);
 		NxsString			&operator<<(char c);
@@ -578,7 +579,7 @@ inline bool NxsString::IsNexusPunctuation(
 >
 	()[]':;,
 >
-List of punctuation taken from the "unquoted labels may not contain" section 
+List of punctuation taken from the "unquoted labels may not contain" section
 of http://evolution.genetics.washington.edu/phylip/newick_doc.html
 
 Thanks to Andrew Lenards for pointing out the need for this when dealing with
@@ -643,6 +644,15 @@ inline NxsString &NxsString::operator<<(
 */
 inline NxsString &NxsString::operator<<(
   unsigned long l)	/* the unsigned long integer to append */
+	{
+	return (*this += l);
+	}
+
+/*!
+	Another way to call the += operator (written to make it possible to use a NxsString like an std::ostream)
+*/
+inline NxsString &NxsString::operator<<(
+  unsigned long long l)	/* the unsigned long integer to append */
 	{
 	return (*this += l);
 	}
