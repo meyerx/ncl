@@ -341,7 +341,7 @@ void summarize(ostream & out) {
 			writeSet(out, "", gaIt->second, " ");
 			out << ". See standard error stream for details.\n";
 		}
-	} 
+	}
 	int supNonNamed = 0;
 	int numSupportedInternals = 0;
 	for (set<const NxsSimpleNode *>::const_iterator rIt = gSupportedNodes.begin(); rIt != gSupportedNodes.end(); ++rIt) {
@@ -554,10 +554,10 @@ void recordSupportedNodes(const map<const NxsSimpleNode *, set<long> > & refNdp2
 			assert(ancIt != refNdp2mrca.end());
 			const set<long> & anm = ancIt->second;
 			if (printDB) { //debugging
-				cerr << "DEBUGGING refTree node " << (long)nd << ": ";
+				cerr << "DEBUGGING refTree node " << (size_t)nd << ": ";
 				writeSet(cerr, "", nm, " ");
 				cerr << "\n";
-				cerr << "refTree par " << (long)firstBranchingAnc << ": ";
+				cerr << "refTree par " << (size_t)firstBranchingAnc << ": ";
 				writeSet(cerr, "", anm, " ");
 				cerr << "\n";
 			}
@@ -585,7 +585,7 @@ void recordSupportedNodes(const map<const NxsSimpleNode *, set<long> > & refNdp2
 						if (printDB) { //debugging
 							cerr <<"UNsupported. node mrca set not in source tree\n";
 						}
-					} 
+					}
 				} else {
 					if (printDB) { //debugging
 						cerr <<"UNsupported. node mrca set == first branching ancestors mrca set on this leaf set\n";
@@ -686,10 +686,10 @@ void processSourceTree(const NxsTaxaBlockAPI * tb, NxsSimpleTree * tree) {
 
 		*gCurrTmpOstream << "   Tree pruned_synth = [&R] ";
 		writeNewickOTTIDs(*gCurrTmpOstream, gRefTree, refNdp2mrca);
-		
+
 		*gCurrTmpOstream << "   Tree input = [&R] ";
 		writeNewickOTTIDs(*gCurrTmpOstream, tree, ndp2mrca);
-		
+
 		*gCurrTmpOstream << "END;\n";
 	}
 }
@@ -956,4 +956,3 @@ int main(int argc, char *argv[])
 	summarize(cout);
 	return gExitCode;
 	}
-
